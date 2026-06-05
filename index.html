@@ -48,12 +48,14 @@
             .bg-video {
                 position: fixed;
                 inset: 0;
-                z-index: -2;
+                z-index: 0;
                 overflow: hidden;
                 pointer-events: none;
             }
 
             .bg-video video {
+                position: absolute;
+                inset: 0;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
@@ -62,10 +64,11 @@
             .bg-video-overlay {
                 position: fixed;
                 inset: 0;
-                z-index: -1;
+                z-index: 0;
                 background: var(--bg);
-                opacity: 0.88;
+                opacity: 0.92;
                 pointer-events: none;
+                transition: opacity 0.5s ease;
             }
 
             .skip-link {
@@ -101,8 +104,12 @@
                 position: relative;
                 z-index: 1;
                 max-width: 640px;
-                margin: 0 auto;
-                padding: 4rem 1.5rem 6rem;
+                margin: 2.5rem auto 4rem;
+                padding: 4rem 1.75rem 6rem;
+                background: rgba(250, 250, 249, 0.96);
+                border: 0.5px solid var(--border);
+                border-radius: 16px;
+                box-shadow: 0 2px 24px rgba(0, 0, 0, 0.04);
             }
 
             /* ── Header ── */
@@ -350,7 +357,12 @@
 
             @media(max-width: 520px) {
                 .portfolio {
+                    margin: 0;
                     padding: 2rem 1.25rem 4rem;
+                    border-radius: 0;
+                    border-left: none;
+                    border-right: none;
+                    box-shadow: none;
                 }
                 .projects-grid {
                     grid-template-columns: 1fr 1fr;
@@ -377,7 +389,7 @@
                 <source src="videos/background.mp4" type="video/mp4"/>
             </video>
         </div>
-        <div class="bg-video-overlay" aria-hidden="true"></div>
+        <div class="bg-video-overlay" id="bg-video-overlay" aria-hidden="true"></div>
 
         <main
             id="main-content"
@@ -422,25 +434,6 @@
                 <p class="about-text">I am a software and data engineer specializing in building high-performance backend systems and automated data pipelines. With a background spanning full-stack .NET development, SQL optimization, and cloud data architecture, I focus on transforming complex datasets into scalable, user-centric tech products.</p>
             </section>
 
-            <!-- Education -->
-            <section class="section" aria-labelledby="education-heading">
-                <h2 class="section-heading" id="education-heading">Education</h2>
-                <div class="timeline-entry">
-                    <div class="timeline-year">2024 — 2026</div>
-                    <div>
-                        <div class="edu-degree">Master of Science - MS, Information Science</div>
-                        <div class="edu-sub">University of Michigan - Ann Arbor, USA</div>
-                    </div>
-                </div>
-                <div class="timeline-entry">
-                    <div class="timeline-year">2020 — 2024</div>
-                    <div>
-                        <div class="edu-degree">Bachelor of Science - BS, Computer & Infomation Science</div>
-                        <div class="edu-sub">University of Michigan - Dearborn, USA</div>
-                    </div>
-                </div>
-            </section>
-
             <!-- Work Experience -->
             <section class="section" aria-labelledby="experience-heading">
                 <h2 class="section-heading" id="experience-heading">Work Experience</h2>
@@ -462,28 +455,47 @@
                 </div>
 
                 <div class="timeline-entry">
-                  <div class="timeline-year" aria-label="2024 to 2025">2024 — 2025</div>
-                  <div>
-                      <div class="timeline-role">Junior Software Developer at Ancor</div>
-                      <div class="timeline-detail">Engineered new features and resolved bugs for the Internal Administrator Portal to support enterprise workflows. Modernized legacy accounting UIs using Bootstrap to improve usability while writing and optimizing SQL stored procedures to ensure efficient database performance.</div>
-                  </div>
-              </div>
-
-              <div class="timeline-entry">
-                <div class="timeline-year" aria-label="2021 to 2024">2021 — 2024</div>
-                <div>
-                    <div class="timeline-role">Computer Consultant II at University of Michigan — Dearborn</div>
-                    <div class="timeline-detail">Managed cross-platform system administration across Windows, macOS, and Linux environments using PowerShell and Bash scripting. Analyzed IT ticketing reports to improve overall service response times and successfully led logistics for a campus-wide hardware refresh project.</div>
+                    <div class="timeline-year" aria-label="2024 to 2025">2024 — 2025</div>
+                    <div>
+                        <div class="timeline-role">Junior Software Developer at Ancor</div>
+                        <div class="timeline-detail">Engineered new features and resolved bugs for the Internal Administrator Portal to support enterprise workflows. Modernized legacy accounting UIs using Bootstrap to improve usability while writing and optimizing SQL stored procedures to ensure efficient database performance.</div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="timeline-entry">
-              <div class="timeline-year" aria-label="2019 to 2020">2019 — 2020</div>
-              <div>
-                  <div class="timeline-role">Information Technology Internship</div>
-                  <div class="timeline-detail">Diagnosed and repaired multi-platform hardware using Bash scripts and remote tools to minimize user downtime. Configured networked engineering devices using Version Control Software to improve documentation accuracy and speed up troubleshooting. Managed software license inventories and deployed critical update scripts via Active Directory.</div>
-              </div>
-          </div>
+                <div class="timeline-entry">
+                    <div class="timeline-year" aria-label="2021 to 2024">2021 — 2024</div>
+                    <div>
+                        <div class="timeline-role">Computer Consultant II at University of Michigan — Dearborn</div>
+                        <div class="timeline-detail">Managed cross-platform system administration across Windows, macOS, and Linux environments using PowerShell and Bash scripting. Analyzed IT ticketing reports to improve overall service response times and successfully led logistics for a campus-wide hardware refresh project.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="timeline-year" aria-label="2019 to 2020">2019 — 2020</div>
+                    <div>
+                        <div class="timeline-role">Information Technology Internship</div>
+                        <div class="timeline-detail">Diagnosed and repaired multi-platform hardware using Bash scripts and remote tools to minimize user downtime. Configured networked engineering devices using Version Control Software to improve documentation accuracy and speed up troubleshooting. Managed software license inventories and deployed critical update scripts via Active Directory.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="section" aria-labelledby="education-heading">
+                <h2 class="section-heading" id="education-heading">Education</h2>
+                <div class="timeline-entry">
+                    <div class="timeline-year">2024 — 2026</div>
+                    <div>
+                        <div class="edu-degree">Master of Science - MS, Information Science</div>
+                        <div class="edu-sub">University of Michigan - Ann Arbor, USA</div>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-year">2020 — 2024</div>
+                    <div>
+                        <div class="edu-degree">Bachelor of Science - BS, Computer & Infomation Science</div>
+                        <div class="edu-sub">University of Michigan - Dearborn, USA</div>
+                    </div>
+                </div>
             </section>
 
 
@@ -558,15 +570,38 @@
         </main>
         <script>
             (function () {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
                 var video = document.getElementById('bg-video');
+                var overlay = document.getElementById('bg-video-overlay');
                 if (!video) return;
+
                 var rate = 0.75;
+                var seamWindow = 0.35;
+                var hidingSeam = false;
+
                 function setRate() {
                     video.playbackRate = rate;
                 }
+
                 setRate();
                 video.addEventListener('loadedmetadata', setRate);
                 video.addEventListener('play', setRate);
+                video.play().catch(function () {});
+
+                if (!overlay) return;
+
+                video.addEventListener('timeupdate', function () {
+                    if (!video.duration) return;
+                    var remaining = video.duration - video.currentTime;
+                    if (remaining <= seamWindow && !hidingSeam) {
+                        hidingSeam = true;
+                        overlay.style.opacity = '0.97';
+                    } else if (remaining > seamWindow + 0.15 && hidingSeam) {
+                        hidingSeam = false;
+                        overlay.style.opacity = '';
+                    }
+                });
             })();
         </script>
     </body>
