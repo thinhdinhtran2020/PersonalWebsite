@@ -1,437 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thinh D. Tran</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Thinh D. Tran</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+        <style>
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
 
-    :root {
-      --bg: #fafaf9;
-      --surface: #f2f1ef;
-      --surface-blue: #eef4fb;      /* #9BC1EC at ~8% opacity on white — decorative only */
-      --accent: #9BC1EC;            /* decorative / large non-text elements only */
-      --accent-text-strong: #4B5D72;/* 6.47:1 on --bg — passes WCAG AA small text */
-      --accent-text-mid: #5C728C;   /* 4.74:1 on --bg — passes WCAG AA small text */
-      --accent-text-soft: #647D99;  /* 4.07:1 on --bg — passes WCAG AA large text */
-      --border: rgba(0,0,0,0.08);
-      --border-accent: rgba(155,193,236,0.35);
-      --border-hover: rgba(0,0,0,0.18);
-      --text-primary: #1a1a1a;
-      --text-secondary: #5a5a5a;
-      --text-tertiary: #999;
-      --radius-card: 12px;
-      --radius-pill: 99px;
-    }
+            :root {
+                --bg: #fafaf9;
+                --surface: #f2f1ef;
+                --surface-blue: #eef4fb; /* #9BC1EC at ~8% opacity on white — decorative only */
+                --accent: #9BC1EC; /* decorative / large non-text elements only */
+                --accent-text-strong: #4B5D72; /* 6.47:1 on --bg — passes WCAG AA small text */
+                --accent-text-mid: #5C728C; /* 4.74:1 on --bg — passes WCAG AA small text */
+                --accent-text-soft: #647D99; /* 4.07:1 on --bg — passes WCAG AA large text */
+                --border: rgba(0, 0, 0, 0.08);
+                --border-accent: rgba(155, 193, 236, 0.35);
+                --border-hover: rgba(0, 0, 0, 0.18);
+                --text-primary: #1a1a1a;
+                --text-secondary: #5a5a5a;
+                --text-tertiary: #999;
+                --radius-card: 12px;
+                --radius-pill: 99px;
+            }
 
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text-primary);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
+            body {
+                font-family: 'Inter', system-ui, -apple-system, sans-serif;
+                background: var(--bg);
+                color: var(--text-primary);
+                line-height: 1.7;
+                -webkit-font-smoothing: antialiased;
+            }
 
-    .portfolio {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem 6rem;
-    }
+            .portfolio {
+                max-width: 640px;
+                margin: 0 auto;
+                padding: 4rem 1.5rem 6rem;
+            }
 
-    /* ── Header ── */
-    .header {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.25rem;
-      margin-bottom: 2.75rem;
-    }
+            /* ── Header ── */
+            .header {
+                display: flex;
+                align-items: flex-start;
+                gap: 1.25rem;
+                margin-bottom: 2.75rem;
+            }
 
-    .avatar {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: var(--surface-blue);
-      border: 1.5px solid var(--accent);   /* accent color on decorative border — no contrast req */
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+            .avatar {
+                width: 68px;
+                height: 68px;
+                border-radius: 50%;
+                background: var(--surface-blue);
+                border: 1.5px solid var(--accent); /* accent color on decorative border — no contrast req */
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
 
-    .avatar svg { opacity: 0.45; }
+            .avatar img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            }
 
-    .header-text { display: flex; flex-direction: column; justify-content: center; }
+            .avatar svg {
+                opacity: 0.45;
+            }
 
-    /* Header name: large text — using accent-text-strong #4B5D72 (6.47:1) */
-    .header-name {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--accent-text-strong);
-    }
+            .header-text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
 
-    .header-title {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-top: 2px;
-    }
+            /* Header name: large text — using accent-text-strong #4B5D72 (6.47:1) */
+            .header-name {
+                font-size: 20px;
+                font-weight: 500;
+                color: var(--accent-text-strong);
+            }
 
-    .header-location {
-      font-size: 13px;
-      color: var(--text-tertiary);
-      margin-top: 3px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+            .header-title {
+                font-size: 14px;
+                color: var(--text-secondary);
+                margin-top: 2px;
+            }
 
-    /* Link badge: uses accent-text-soft — treated as large text (badge context, short label) */
-    .link-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 10px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--accent-text-mid);
-      background: var(--surface-blue);
-      border: 1px solid var(--border-accent);
-      border-radius: var(--radius-pill);
-      padding: 4px 12px;
-      text-decoration: none;
-      transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-    }
-    .link-badge:hover {
-      border-color: var(--accent);
-      color: var(--accent-text-strong);
-      background: #e4eef8;
-    }
-    .link-badge:focus-visible {
-      outline: 2px solid var(--accent-text-strong);
-      outline-offset: 2px;
-    }
-    .link-badge svg { flex-shrink: 0; }
+            .header-location {
+                font-size: 13px;
+                color: var(--text-tertiary);
+                margin-top: 3px;
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
 
-    /* ── Divider — accent tinted ── */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border-accent);
-      margin: 2.5rem 0;
-    }
+            /* Link badge: uses accent-text-soft — treated as large text (badge context, short label) */
+            .link-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+                margin-top: 10px;
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--accent-text-mid);
+                background: var(--surface-blue);
+                border: 1px solid var(--border-accent);
+                border-radius: var(--radius-pill);
+                padding: 4px 12px;
+                text-decoration: none;
+                transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+            }
+            .link-badge:hover {
+                border-color: var(--accent);
+                color: var(--accent-text-strong);
+                background: #e4eef8;
+            }
+            .link-badge:focus-visible {
+                outline: 2px solid var(--accent-text-strong);
+                outline-offset: 2px;
+            }
+            .link-badge svg {
+                flex-shrink: 0;
+            }
 
-    /* ── Section ── */
-    .section { margin-bottom: 2.75rem; }
+            /* ── Divider — accent tinted ── */
+            .divider {
+                border: none;
+                border-top: 1px solid var(--border-accent);
+                margin: 2.5rem 0;
+            }
 
-    /* Section headings: accent-text-mid #5C728C (4.74:1) */
-    .section-heading {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--accent-text-mid);
-      margin-bottom: 1.1rem;
-    }
+            /* ── Section ── */
+            .section {
+                margin-bottom: 2.75rem;
+            }
 
-    /* ── About ── */
-    .about-text {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.85;
-    }
+            /* Section headings: accent-text-mid #5C728C (4.74:1) */
+            .section-heading {
+                font-size: 11px;
+                font-weight: 500;
+                letter-spacing: 0.09em;
+                text-transform: uppercase;
+                color: var(--accent-text-mid);
+                margin-bottom: 1.1rem;
+            }
 
-    /* ── Skills ── */
-    .skills-group { margin-bottom: 0.65rem; }
-    .skills-group:last-child { margin-bottom: 0; }
+            /* ── About ── */
+            .about-text {
+                font-size: 14px;
+                color: var(--text-secondary);
+                line-height: 1.85;
+            }
 
-    /* Skills labels: accent-text-mid (4.74:1) */
-    .skills-label {
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--accent-text-mid);
-      margin-bottom: 1px;
-    }
-    .skills-list {
-      font-size: 14px;
-      color: var(--text-secondary);
-    }
+            /* ── Skills ── */
+            .skills-group {
+                margin-bottom: 0.65rem;
+            }
+            .skills-group:last-child {
+                margin-bottom: 0;
+            }
 
-    /* ── Timeline ── */
-    .timeline-entry {
-      display: grid;
-      grid-template-columns: 108px 1fr;
-      gap: 1.25rem;
-      padding: 1rem 0;
-      border-top: 0.5px solid var(--border-accent);
-    }
-    .timeline-entry:last-child {
-      border-bottom: 0.5px solid var(--border-accent);
-    }
+            /* Skills labels: accent-text-mid (4.74:1) */
+            .skills-label {
+                font-size: 11px;
+                font-weight: 500;
+                color: var(--accent-text-mid);
+                margin-bottom: 1px;
+            }
+            .skills-list {
+                font-size: 14px;
+                color: var(--text-secondary);
+            }
 
-    /* Timeline years: accent-text-soft treated as non-text UI label */
-    .timeline-year {
-      font-size: 12px;
-      color: var(--accent-text-soft);
-      padding-top: 2px;
-      line-height: 1.6;
-    }
+            /* ── Timeline ── */
+            .timeline-entry {
+                display: grid;
+                grid-template-columns: 108px 1fr;
+                gap: 1.25rem;
+                padding: 1rem 0;
+                border-top: 0.5px solid var(--border-accent);
+            }
+            .timeline-entry:last-child {
+                border-bottom: 0.5px solid var(--border-accent);
+            }
 
-    .timeline-role {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    .timeline-role a {
-      color: inherit;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: color 0.15s ease;
-    }
-    .timeline-role a:hover { color: var(--accent-text-strong); }
-    .timeline-role a:focus-visible {
-      outline: 2px solid var(--accent-text-strong);
-      outline-offset: 2px;
-      border-radius: 2px;
-    }
-    .timeline-role a svg { opacity: 0.4; flex-shrink: 0; }
+            /* Timeline years: accent-text-soft treated as non-text UI label */
+            .timeline-year {
+                font-size: 12px;
+                color: var(--accent-text-soft);
+                padding-top: 2px;
+                line-height: 1.6;
+            }
 
-    .timeline-detail {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 5px;
-      line-height: 1.8;
-    }
+            .timeline-role {
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--text-primary);
+            }
 
-    .edu-degree { font-size: 14px; font-weight: 500; color: var(--text-primary); }
-    .edu-sub { font-size: 13px; color: var(--text-secondary); margin-top: 3px; }
+            .timeline-detail {
+                font-size: 13px;
+                color: var(--text-secondary);
+                margin-top: 5px;
+                line-height: 1.8;
+            }
 
-    /* ── Projects ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.875rem;
-    }
+            .edu-degree {
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--text-primary);
+            }
+            .edu-sub {
+                font-size: 13px;
+                color: var(--text-secondary);
+                margin-top: 3px;
+            }
 
-    .project-card {
-      background: #fff;
-      border: 0.5px solid var(--border-accent);
-      border-radius: var(--radius-card);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      text-decoration: none;
-      display: block;
-    }
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 8px 24px rgba(155,193,236,0.18);
-    }
-    .project-card:focus-visible {
-      outline: 2px solid var(--accent-text-strong);
-      outline-offset: 2px;
-    }
+            /* ── Projects ── */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.875rem;
+            }
 
-    /* Project image placeholder tinted with accent */
-    .project-img {
-      aspect-ratio: 4 / 3;
-      background: var(--surface-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .project-img svg { opacity: 0.35; }
+            .project-card {
+                background: #fff;
+                border: 0.5px solid var(--border-accent);
+                border-radius: var(--radius-card);
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+                text-decoration: none;
+                display: block;
+            }
+            .project-card:hover {
+                transform: translateY(-4px);
+                border-color: var(--accent);
+                box-shadow: 0 8px 24px rgba(155, 193, 236, 0.18);
+            }
+            .project-card:focus-visible {
+                outline: 2px solid var(--accent-text-strong);
+                outline-offset: 2px;
+            }
 
-    .project-body { padding: 11px 14px 14px; }
-    .project-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-primary);
-    }
-    .project-desc {
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-top: 4px;
-      line-height: 1.65;
-    }
+            /* Project image placeholder tinted with accent */
+            .project-img {
+                aspect-ratio: 4 / 3;
+                background: var(--surface-blue);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .project-img svg {
+                opacity: 0.35;
+            }
 
-    /* ── Responsive ── */
-    @media (max-width: 520px) {
-      .portfolio { padding: 2rem 1.25rem 4rem; }
-      .projects-grid { grid-template-columns: 1fr 1fr; }
-      .timeline-entry { grid-template-columns: 80px 1fr; gap: 1rem; }
-      .header { gap: 1rem; }
-      .avatar { width: 58px; height: 58px; }
-    }
-  </style>
-</head>
-<body>
-  <main class="portfolio">
+            .project-body {
+                padding: 11px 14px 14px;
+            }
+            .project-title {
+                font-size: 13px;
+                font-weight: 500;
+                color: var(--text-primary);
+            }
+            .project-desc {
+                font-size: 12px;
+                color: var(--text-secondary);
+                margin-top: 4px;
+                line-height: 1.65;
+            }
 
-    <!-- Header -->
-    <header class="header">
-      <div class="avatar" role="img" aria-label="Profile photo placeholder">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#4B5D72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      </div>
-      <div class="header-text">
-        <div class="header-name">Thinh D. Tran</div>
-        <div class="header-title">Data & Tech Developer</div>
-        <div class="header-location" aria-label="Location">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
-          Michigan, USA
-        </div>
-        <a class="link-badge" href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-            <rect x="2" y="9" width="4" height="12"/>
-            <circle cx="4" cy="4" r="2"/>
-          </svg>
-          https://www.linkedin.com/in/thinhdinhtran/
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-          </svg>
-        </a>
-      </div>
-    </header>
+            /* ── Responsive ── */
+            @media(max-width: 520px) {
+                .portfolio {
+                    padding: 2rem 1.25rem 4rem;
+                }
+                .projects-grid {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .timeline-entry {
+                    grid-template-columns: 80px 1fr;
+                    gap: 1rem;
+                }
+                .header {
+                    gap: 1rem;
+                }
+                .avatar {
+                    width: 58px;
+                    height: 58px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main
+            class="portfolio">
 
-    <hr class="divider" />
+            <!-- Header -->
+            <header class="header">
+                <div class="avatar">
+                    <img src="images/IMG_0884.PNG" alt="Profile photo of Thinh D. Tran"/>
+                </div>
+                <div class="header-text">
+                    <div class="header-name">Thinh D. Tran</div>
+                    <div class="header-title">Data & Tech Developer</div>
+                    <div class="header-location" aria-label="Location">
+                        <svg width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        Michigan, USA
+                    </div>
+                    <a class="link-badge" href="https://www.linkedin.com/in/thinhdinhtran/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile (opens in new tab)">
+                        <svg width="12" height="12" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/>
+                            <circle cx="4" cy="4" r="2"/>
+                        </svg>
+                        https://www.linkedin.com/in/thinhdinhtran/
+                        <svg width="10" height="10" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+                        </svg>
+                    </a>
+                </div>
+            </header>
 
-    <!-- About -->
-    <section class="section" aria-labelledby="about-heading">
-      <p class="section-heading" id="about-heading">About</p>
-      <p class="about-text">I am a software and data engineer specializing in building high-performance backend systems and automated data pipelines. With a background spanning full-stack .NET development, SQL optimization, and cloud data architecture, I focus on transforming complex datasets into scalable, user-centric tech products.</p>
-    </section>
+            <hr
+            class="divider"/>
 
-      <!-- Education -->
-      <section class="section" aria-labelledby="education-heading">
-        <p class="section-heading" id="education-heading">Education</p>
-        <div class="timeline-entry">
-          <div class="timeline-year">2024 — 2026</div>
-          <div>
-            <div class="edu-degree">Master of Science - MS, Information Science</div>
-            <div class="edu-sub">University of Michigan - Ann Arbor, USA</div>
+            <!-- About -->
+            <section class="section" aria-labelledby="about-heading">
+                <p class="section-heading" id="about-heading">About</p>
+                <p class="about-text">I am a software and data engineer specializing in building high-performance backend systems and automated data pipelines. With a background spanning full-stack .NET development, SQL optimization, and cloud data architecture, I focus on transforming complex datasets into scalable, user-centric tech products.</p>
+            </section>
+
+            <!-- Education -->
+            <section class="section" aria-labelledby="education-heading">
+                <p class="section-heading" id="education-heading">Education</p>
+                <div class="timeline-entry">
+                    <div class="timeline-year">2024 — 2026</div>
+                    <div>
+                        <div class="edu-degree">Master of Science - MS, Information Science</div>
+                        <div class="edu-sub">University of Michigan - Ann Arbor, USA</div>
+                    </div>
+                </div>
+                <div class="timeline-entry">
+                    <div class="timeline-year">2020 — 2024</div>
+                    <div>
+                        <div class="edu-degree">Bachelor of Science - BS, Computer & Infomation Science</div>
+                        <div class="edu-sub">University of Michigan - Dearborn, USA</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section class="section" aria-labelledby="experience-heading">
+                <p class="section-heading" id="experience-heading">Work Experience</p>
+
+                <div class="timeline-entry">
+                    <div class="timeline-year" aria-label="2026 to present">2026 — Present</div>
+                    <div>
+                        <div class="timeline-role">Data & Tech Developer at Ancor</div>
+                        <div class="timeline-detail">Delivered enterprise features and data solutions for major automotive brands, including Ford, Stellantis, and Aston Martin. Engineered automated file transfer pipelines using SFTP and Bash scripts to secure critical data delivery and eliminate manual errors. Additionally, shipped data pipeline improvements that cut workflow task completion times by approximately 40%.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="timeline-year" aria-label="2025 to 2026">2025 — 2026</div>
+                    <div>
+                        <div class="timeline-role">Junior Data & Tech Developer at Ancor</div>
+                        <div class="timeline-detail">Partnered with project managers to scope and ship reliable features within fixed billable hours using C# and Bootstrap. Maintained system stability under tight deadlines and resolved critical, large-scale production outages outside standard hours. Coordinated directly with stakeholders to restore services swiftly and prevent future disruptions.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-entry">
+                  <div class="timeline-year" aria-label="2024 to 2025">2024 — 2025</div>
+                  <div>
+                      <div class="timeline-role">Junior Software Developer at Ancor</div>
+                      <div class="timeline-detail">Engineered new features and resolved bugs for the Internal Administrator Portal to support enterprise workflows. Modernized legacy accounting UIs using Bootstrap to improve usability while writing and optimizing SQL stored procedures to ensure efficient database performance.</div>
+                  </div>
+              </div>
+
+              <div class="timeline-entry">
+                <div class="timeline-year" aria-label="2021 to 2024">2021 — 2024</div>
+                <div>
+                    <div class="timeline-role">Computer Consultant II at University of Michigan — Dearborn</div>
+                    <div class="timeline-detail">Managed cross-platform system administration across Windows, macOS, and Linux environments using PowerShell and Bash scripting. Analyzed IT ticketing reports to improve overall service response times and successfully led logistics for a campus-wide hardware refresh project.</div>
+                </div>
+            </div>
+
+            <div class="timeline-entry">
+              <div class="timeline-year" aria-label="2019 to 2020">2019 — 2020</div>
+              <div>
+                  <div class="timeline-role">Information Technology Internship</div>
+                  <div class="timeline-detail">Diagnosed and repaired multi-platform hardware using Bash scripts and remote tools to minimize user downtime. Configured networked engineering devices using Version Control Software to improve documentation accuracy and speed up troubleshooting. Managed software license inventories and deployed critical update scripts via Active Directory.</div>
+              </div>
           </div>
-        </div>
-        <div class="timeline-entry">
-          <div class="timeline-year">2020 — 2024</div>
-          <div>
-            <div class="edu-degree">Bachelor of Science - BS, Computer & Infomation Science</div>
-            <div class="edu-sub">University of Michigan - Dearborn, USA</div>
-          </div>
-        </div>
-      </section>
-
-    <!-- Work Experience -->
-    <section class="section" aria-labelledby="experience-heading">
-      <p class="section-heading" id="experience-heading">Work Experience</p>
-
-      <div class="timeline-entry">
-        <div class="timeline-year" aria-label="2022 to present">2022 — Present</div>
-        <div>
-          <div class="timeline-role">
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Senior Product Engineer at [Company Name] (opens in new tab)">
-              Senior Product Engineer at [Company Name]
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </a>
-          </div>
-          <div class="timeline-detail">Led frontend architecture for a platform serving 500k+ monthly active users, reducing load times by 40%. Collaborated cross-functionally with design and product to ship a redesigned onboarding flow that improved activation rates. Mentored a team of 3 junior engineers through weekly code reviews and technical workshops.</div>
-        </div>
-      </div>
-
-      <div class="timeline-entry">
-        <div class="timeline-year" aria-label="2019 to 2022">2019 — 2022</div>
-        <div>
-          <div class="timeline-role">
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Software Engineer at [Previous Company] (opens in new tab)">
-              Software Engineer at [Previous Company]
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
-              </svg>
-            </a>
-          </div>
-          <div class="timeline-detail">Built and maintained core product features used by enterprise clients across finance and healthcare verticals. Drove migration from a legacy monolith to a modular micro-frontend architecture. Improved CI/CD pipeline reliability, reducing deployment failures by 60%.</div>
-        </div>
-      </div>
-    </section>
+            </section>
 
 
+            <!-- Skills -->
+            <section class="section" aria-labelledby="skills-heading">
+                <p class="section-heading" id="skills-heading">Skills</p>
+                <div class="skills-group">
+                    <div class="skills-label" id="skills-frontend">Front End & Design</div>
+                    <div class="skills-list" aria-labelledby="skills-frontend">JavaScript, TypeScript, React, React Native, Figma, Tailwind, Bootstrap, Blazor, jQuery, HTML/CSS, Photoshop</div>
+                </div>
+                <div class="skills-group">
+                    <div class="skills-label" id="skills-backend">Back End & Cloud</div>
+                    <div class="skills-list" aria-labelledby="skills-backend">C#, Python, REST APIs, VB.NET, GraphQL, Azure DevOps, Git, CI/CD, Docker</div>
+                </div>
+                <div class="skills-group">
+                    <div class="skills-label" id="skills-tools">Data Engineering</div>
+                    <div class="skills-list" aria-labelledby="skills-tools">SQL Server (T-SQL), Stored Procedure Tuning, Databricks, Spark, ETL Pipelines, Data Warehousing, Data Lakes (Delta)</div>
+                </div>
+                <div class="skills-group">
+                  <div class="skills-label" id="skills-tools">AI & Systems</div>
+                  <div class="skills-list" aria-labelledby="skills-tools">Scripting (PowerShell, Bash), System Administration, Job Scheduling, Encryption, AI Tooling (Cursor, Copilot, Gemini)</div>
+              </div>
+            </section>
 
-    <!-- Skills -->
-    <section class="section" aria-labelledby="skills-heading">
-      <p class="section-heading" id="skills-heading">Skills</p>
-      <div class="skills-group">
-        <div class="skills-label" id="skills-frontend">Frontend</div>
-        <div class="skills-list" aria-labelledby="skills-frontend">React, TypeScript, Next.js, Tailwind CSS, Figma</div>
-      </div>
-      <div class="skills-group">
-        <div class="skills-label" id="skills-backend">Backend</div>
-        <div class="skills-list" aria-labelledby="skills-backend">Node.js, Python, PostgreSQL, REST APIs, GraphQL</div>
-      </div>
-      <div class="skills-group">
-        <div class="skills-label" id="skills-tools">Tools &amp; Platforms</div>
-        <div class="skills-list" aria-labelledby="skills-tools">Git, Docker, AWS, Vercel, Linear</div>
-      </div>
-    </section>
+            <!-- Projects -->
+             <!-- WIP -->
+            <!-- <section class="section" aria-labelledby="projects-heading">
+                <p class="section-heading" id="projects-heading">Projects</p>
+                <div class="projects-grid" role="list">
 
-    <!-- Projects -->
-    <section class="section" aria-labelledby="projects-heading">
-      <p class="section-heading" id="projects-heading">Projects</p>
-      <div class="projects-grid" role="list">
+                    <a class="project-card" href="#" role="listitem" aria-label="Project Title One — A web app for managing distributed team workflows">
+                        <div class="project-img" aria-hidden="true">
+                            <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#4B5D72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                                <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+                            </svg>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title">Project Title One</div>
+                            <div class="project-desc">A web app for managing distributed team workflows with real-time collaboration.</div>
+                        </div>
+                    </a>
 
-        <a class="project-card" href="#" role="listitem" aria-label="Project Title One — A web app for managing distributed team workflows">
-          <div class="project-img" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4B5D72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
-              <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
-            </svg>
-          </div>
-          <div class="project-body">
-            <div class="project-title">Project Title One</div>
-            <div class="project-desc">A web app for managing distributed team workflows with real-time collaboration.</div>
-          </div>
-        </a>
+                    <a class="project-card" href="#" role="listitem" aria-label="Project Title Two — An analytics dashboard visualizing user behavior">
+                        <div class="project-img" aria-hidden="true">
+                            <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#4B5D72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title">Project Title Two</div>
+                            <div class="project-desc">An analytics dashboard visualizing user behavior across multi-channel funnels.</div>
+                        </div>
+                    </a>
 
-        <a class="project-card" href="#" role="listitem" aria-label="Project Title Two — An analytics dashboard visualizing user behavior">
-          <div class="project-img" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4B5D72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
-          </div>
-          <div class="project-body">
-            <div class="project-title">Project Title Two</div>
-            <div class="project-desc">An analytics dashboard visualizing user behavior across multi-channel funnels.</div>
-          </div>
-        </a>
+                    <a class="project-card" href="#" role="listitem" aria-label="Project Title Three — A cross-platform mobile app for finance tracking">
+                        <div class="project-img" aria-hidden="true">
+                            <svg width="28" height="28" viewbox="0 0 24 24" fill="none" stroke="#4B5D72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18"/>
+                            </svg>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title">Project Title Three</div>
+                            <div class="project-desc">A cross-platform mobile app for tracking personal finance goals and savings milestones.</div>
+                        </div>
+                    </a>
 
-        <a class="project-card" href="#" role="listitem" aria-label="Project Title Three — A cross-platform mobile app for finance tracking">
-          <div class="project-img" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4B5D72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-              <line x1="12" y1="18" x2="12.01" y2="18"/>
-            </svg>
-          </div>
-          <div class="project-body">
-            <div class="project-title">Project Title Three</div>
-            <div class="project-desc">A cross-platform mobile app for tracking personal finance goals and savings milestones.</div>
-          </div>
-        </a>
+                </div>
+            </section> -->
 
-      </div>
-    </section>
-
-  </main>
-</body>
+        </main>
+    </body>
 </html>
