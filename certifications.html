@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Certifications — Thinh D. Tran</title>
+        <link rel="icon" href="images/favicon.png" type="image/png"/>
+        <link rel="apple-touch-icon" href="images/favicon.png"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </head>
+    <body>
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+
+        <nav class="site-nav" aria-label="Site">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="certifications.html" aria-current="page">Certifications</a>
+        </nav>
+
+        <div class="bg-video" aria-hidden="true">
+            <video id="bg-video" autoplay muted loop playsinline preload="auto">
+                <source src="videos/background.mp4" type="video/mp4"/>
+            </video>
+        </div>
+        <div class="bg-video-overlay" id="bg-video-overlay" aria-hidden="true"></div>
+
+        <main id="main-content" class="page">
+            <header class="page-header">
+                <h1 class="page-title">Certifications</h1>
+            </header>
+
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <img src="certification-images/CompleteGuideToDatabricksForDataEngineering.jpg" alt="Complete Guide to Databricks for Data Engineering"/>
+                </div>
+                <div class="cert-card">
+                    <img src="certification-images/DatabricksFundamentals.jpg" alt="Databricks Fundamentals"/>
+                </div>
+                <div class="cert-card">
+                    <img src="certification-images/MicrosoftAzureEssentialsByMicrosoftPress.jpg" alt="Microsoft Azure Essentials by Microsoft Press"/>
+                </div>
+                <div class="cert-card">
+                    <img src="certification-images/RelationalDatabasesEssentialTraining.jpg" alt="Relational Databases Essential Training"/>
+                </div>
+                <div class="cert-card">
+                    <img src="certification-images/IntroductionToDataWarehouses.jpg" alt="Introduction to Data Warehouses"/>
+                </div>
+                <div class="cert-card">
+                    <img src="certification-images/FigmaEssentialTraining.jpg" alt="Figma Essential Training"/>
+                </div>
+            </div>
+        </main>
+
+        <script>
+            (function () {
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+                var video = document.getElementById('bg-video');
+                var overlay = document.getElementById('bg-video-overlay');
+                if (!video) return;
+
+                var rate = 0.55;
+                var seamWindow = 0.35;
+                var hidingSeam = false;
+
+                function setRate() {
+                    video.playbackRate = rate;
+                }
+
+                setRate();
+                video.addEventListener('loadedmetadata', setRate);
+                video.addEventListener('play', setRate);
+                video.play().catch(function () {});
+
+                if (!overlay) return;
+
+                video.addEventListener('timeupdate', function () {
+                    if (!video.duration) return;
+                    var remaining = video.duration - video.currentTime;
+                    if (remaining <= seamWindow && !hidingSeam) {
+                        hidingSeam = true;
+                        overlay.style.opacity = '0.97';
+                    } else if (remaining > seamWindow + 0.15 && hidingSeam) {
+                        hidingSeam = false;
+                        overlay.style.opacity = '';
+                    }
+                });
+            })();
+        </script>
+    </body>
+</html>
